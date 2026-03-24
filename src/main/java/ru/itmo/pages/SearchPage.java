@@ -6,10 +6,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public abstract class SearchPage extends BasePage {
-    protected static final By INPUT =
-            By.xpath("//textarea[@aria-label='WolframAlpha input field']");
-    protected static final By COMPUTE_BUTTON =
-            By.xpath("//button[@aria-label='Compute input button']");
+    protected static final By INPUT = By.xpath("//textarea[@aria-label='WolframAlpha input field']");
+    protected static final By COMPUTE_BUTTON = By.xpath("//button[@aria-label='Compute input button']");
 
     protected SearchPage(WebDriver driver) {
         super(driver);

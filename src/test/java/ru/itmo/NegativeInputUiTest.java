@@ -40,7 +40,7 @@ public class NegativeInputUiTest extends BaseUiTest {
                 .open()
                 .typeQuery(longQuery);
 
-        assertFalse(homePage.getInputText().isBlank(), "Даже длинный запрос должен сохраниться хотя бы частично");
+        assertFalse(homePage.getInputText().isBlank(), "Длинный запрос должен сохраниться хотя бы частично");
         assertTrue(homePage.getInputText().length() > 100, "Поле должно принимать длинный пользовательский ввод");
         assertTrue(homePage.isComputeButtonVisible(), "Сайт должен оставаться работоспособным при длинном вводе");
     }

@@ -47,7 +47,7 @@ public class BasicFunctionalityUiTest extends BaseUiTest {
                         || resultsPage.anyImageAltContains("x^3/3")
                         || resultsPage.anyImageAltContains("1/3 x^3")
                         || resultsPage.anyImageAltContains("⅓ x^3"),
-                "Для интеграла должен появиться pod или результат с x^3/3"
+                "Для интеграла должен появиться результат с x^3/3"
         );
     }
 

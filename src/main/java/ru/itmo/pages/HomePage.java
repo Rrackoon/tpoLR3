@@ -4,8 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class HomePage extends SearchPage {
-    private static final By NATURAL_LANGUAGE_TAB =
-            By.xpath("//button[.//span[normalize-space()='Natural Language']]");
+    private static final By NATURAL_LANGUAGE_TAB = By.xpath("//button[.//span[normalize-space()='Natural Language']]");
 
     private final String baseUrl;
 

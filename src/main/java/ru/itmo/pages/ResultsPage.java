@@ -46,11 +46,6 @@ public class ResultsPage extends SearchPage {
         return this;
     }
 
-    public ResultsPage waitForPod(String header) {
-        wait.until(driver -> hasPod(header));
-        return this;
-    }
-
     public ResultsPage waitForPodContaining(String headerFragment) {
         wait.until(driver -> hasPodContaining(headerFragment));
         return this;
@@ -65,21 +60,8 @@ public class ResultsPage extends SearchPage {
                 .isEmpty();
     }
 
-    public List<String> getPodHeaders() {
-        return findAll(POD_HEADERS).stream()
-                .map(WebElement::getText)
-                .map(String::trim)
-                .filter(text -> !text.isEmpty())
-                .collect(Collectors.toList());
-    }
-
     public String getFirstImageAltInPod(String header) {
         By locator = By.xpath("((//h2/span[normalize-space()='" + header + "']/ancestor::section[@tabindex='0'])[1]//img[@alt and normalize-space(@alt)!=''])[1]");
-        return waitVisible(locator).getAttribute("alt").trim();
-    }
-
-    public String getFirstImageAltInPodContaining(String headerFragment) {
-        By locator = By.xpath("((//h2/span[contains(normalize-space(),'" + headerFragment + "')]/ancestor::section[@tabindex='0'])[1]//img[@alt and normalize-space(@alt)!=''])[1]");
         return waitVisible(locator).getAttribute("alt").trim();
     }
 
@@ -89,11 +71,6 @@ public class ResultsPage extends SearchPage {
                 .map(element -> element.getAttribute("alt"))
                 .map(this::normalize)
                 .anyMatch(alt -> alt.contains(normalizedFragment));
-    }
-
-    public boolean podHasVisualContent(String header) {
-        String expression = "((//h2/span[normalize-space()='" + header + "']/ancestor::section[@tabindex='0'])[1]//*[self::img or self::canvas or self::svg])";
-        return !findAll(By.xpath(expression)).isEmpty();
     }
 
     public boolean podHasVisualContentContaining(String headerFragment) {
@@ -116,11 +93,6 @@ public class ResultsPage extends SearchPage {
     public ResultsPage searchAgainWithButton(String query) {
         typeQuery(query);
         return submitWithButton().waitUntilOpenedForQuery(query);
-    }
-
-    public ResultsPage searchAgainWithEnter(String query) {
-        typeQuery(query);
-        return submitWithEnter().waitUntilOpenedForQuery(query);
     }
 
     public ResultsPage refreshAndWait() {
