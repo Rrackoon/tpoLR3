@@ -64,7 +64,7 @@ public class UserFlowUiTest extends BaseUiTest {
     }
 
     @Test
-    void tc23ResultLinkShouldBeAvailableWhenPresent() {
+    void tc21ResultLinkShouldBeAvailableWhenPresent() {
         ResultsPage resultsPage = new HomePage(driver, baseUrl)
                 .open()
                 .typeQuery("capital of Germany")
