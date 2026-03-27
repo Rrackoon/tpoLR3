@@ -44,14 +44,6 @@ public abstract class BasePage {
         element.sendKeys(text);
     }
 
-    protected void typeTextFast(By locator, String text) {
-        WebElement element = waitVisible(locator);
-        element.click();
-        element.sendKeys(Keys.chord(Keys.COMMAND, "a"));
-        element.sendKeys(Keys.DELETE);
-        element.sendKeys(text);
-    }
-
     protected String normalizedInputValue(By locator) {
         String value = waitVisible(locator).getDomProperty("value");
         return value == null ? "" : value.trim();
@@ -64,24 +56,7 @@ public abstract class BasePage {
     protected void waitForPageSourceContains(String text) {
         wait.until(driver -> pageSourceContainsIgnoreCase(text));
     }
-
-    protected void waitForUrlContains(String value) {
-        wait.until(ExpectedConditions.urlContains(value));
-    }
-
-    protected void waitForTitleContains(String value) {
-        wait.until(ExpectedConditions.titleContains(value));
-    }
-
     protected void refreshPage() {
         driver.navigate().refresh();
-    }
-
-    protected void scrollIntoView(By locator) {
-        WebElement element = waitVisible(locator);
-        ((JavascriptExecutor) driver).executeScript(
-                "arguments[0].scrollIntoView({block: 'center'});",
-                element
-        );
     }
 }
